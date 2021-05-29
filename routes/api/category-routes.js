@@ -33,9 +33,8 @@ router.get("/:id", async (req, res) => {
   // be sure to include its associated Products
 });
 
+// create a new category
 router.post("/", async (req, res) => {
-  // create a new category
-
   try {
     const categoryData = await Category.create({
       category_name: req.body.category_name,
@@ -49,7 +48,7 @@ router.post("/", async (req, res) => {
 // update
 router.put("/:id", async (req, res) => {
   try {
-    const categoryData = await Tag.update({
+    const categoryData = await Category.update({
       where: {
         id: req.params.id,
       },
@@ -60,7 +59,7 @@ router.put("/:id", async (req, res) => {
       return;
     }
 
-    res.status(200).json(readerData);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
